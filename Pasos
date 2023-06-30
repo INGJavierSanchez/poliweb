@@ -1,0 +1,38 @@
+
+Después de clonar un proyecto de Laravel, aquí tienes los pasos que puedes seguir:
+
+Abre tu terminal y navega hasta el directorio raíz del proyecto clonado.
+
+Ejecuta el siguiente comando para instalar las dependencias del proyecto:
+
+
+composer install
+Este comando utilizará Composer para instalar todas las dependencias del proyecto Laravel que están definidas en el archivo composer.json.
+
+Si el proyecto clonado no incluye un archivo .env, deberás crearlo. Puedes hacer una copia del archivo .env.example y renombrarlo a .env. Luego, abre el archivo .env y configura los valores de conexión a la base de datos y otras variables de entorno según tu configuración local.
+shell
+
+cp .env.example .env
+Genera una nueva clave de aplicación ejecutando el siguiente comando:
+
+php artisan key:generate
+Este comando generará una nueva clave de aplicación en el archivo .env.
+
+Si tu proyecto utiliza almacenamiento de archivos, puedes crear un enlace simbólico desde el directorio de almacenamiento ejecutando el siguiente comando:
+
+php artisan storage:link
+Esto creará un enlace simbólico desde el directorio public/storage al directorio storage/app/public, lo cual permitirá acceder a los archivos almacenados a través de la web.
+
+Si el proyecto utiliza una base de datos, puedes ejecutar las migraciones para crear las tablas necesarias en la base de datos:
+
+
+php artisan migrate
+Este comando ejecutará todas las migraciones pendientes en orden, creando las tablas y la estructura necesaria en la base de datos.
+
+Finalmente, puedes ejecutar el servidor de desarrollo de Laravel ejecutando el siguiente comando:
+
+
+php artisan serve
+Esto iniciará el servidor de desarrollo de Laravel, y podrás acceder a tu aplicación en http://localhost:8000 en tu navegador.
+
+¡Eso es todo! Ahora deberías tener el proyecto de Laravel clonado y configurado correctamente en tu entorno local.
