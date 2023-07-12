@@ -2,7 +2,8 @@
 FROM php:7.4-fpm
 
 # Instala las dependencias necesarias
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get update\
     git \
     curl \
     libpng-dev \
@@ -42,4 +43,4 @@ RUN chown -R www-data:www-data /var/www/storage
 EXPOSE 8000
 
 # Inicia el servidor web de Laravel
-CMD php artisan serve --host=0.0.0.0 --port=85
+CMD php artisan serve --host=0.0.0.0 --port=8000
