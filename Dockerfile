@@ -2,8 +2,8 @@
 FROM php:7.4-fpm
 
 # Instala las dependencias necesarias
-RUN apt-get update && apt-get upgrade -y
-RUN apt-get update\
+RUN apt-get update &&\
+    apt-get install -y\
     git \
     curl \
     libpng-dev \
