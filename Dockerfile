@@ -1,8 +1,20 @@
 # Utiliza la imagen base de PHP
+FROM ubuntu:20.04
+
+# Utiliza la imagen base de PHP
 FROM php:7.4-fpm
 
 # Copia el archivo /etc/resolv.conf del host al contenedor
 COPY resolv.conf /etc/resolv.conf
+
+# Actualiza los repositorios e instala los paquetes necesarios
+RUN apt-get update && apt-get install -y \
+    php \
+    php-cli \
+    php-fpm \
+    php-mysql \
+    php-mbstring \
+    php-xml
 
 # Instala las dependencias necesarias
 RUN apt-get update && apt-get install -y \
