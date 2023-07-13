@@ -1,10 +1,15 @@
-# Utiliza la imagen base de PHP
+#Ubuntu
 FROM ubuntu:20.04
 
 # Copia el archivo /etc/resolv.conf del host al contenedor
 COPY resolv.conf /etc/resolv.conf
 
-RUN sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/old-releases.ubuntu.com/g' /etc/apt/sources.list
+#RUN sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/old-releases.ubuntu.com/g' /etc/apt/sources.list
+
+# Configurar los servidores de repositorios
+RUN echo "deb http://archive.ubuntu.com/ubuntu focal main universe" > /etc/apt/sources.list \
+    && echo "deb http://archive.ubuntu.com/ubuntu focal-security main universe" >> /etc/apt/sources.list \
+    && echo "deb http://archive.ubuntu.com/ubuntu focal-updates main universe" >> /etc/apt/sources.list
 
 # Actualiza los repositorios e instala los paquetes necesarios
 RUN apt-get update && apt-get install -y \
