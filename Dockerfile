@@ -2,7 +2,7 @@
 FROM php:7.4-fpm
 
 # Copia el archivo /etc/resolv.conf del host al contenedor
-COPY /etc/resolv.conf /etc/resolv.conf
+COPY resolv.conf /etc/resolv.conf
 
 # Configura los servidores DNS de Google
 RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf \
