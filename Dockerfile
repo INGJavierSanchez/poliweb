@@ -1,9 +1,6 @@
 # Utiliza la imagen base de PHP
 FROM ubuntu:20.04
 
-# Utiliza la imagen base de PHP
-FROM php:7.4-fpm
-
 # Copia el archivo /etc/resolv.conf del host al contenedor
 COPY resolv.conf /etc/resolv.conf
 
