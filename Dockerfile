@@ -1,6 +1,10 @@
 # Utiliza la imagen base de PHP
 FROM php:7.4-fpm
 
+# Configura los servidores DNS de Google
+RUN echo "nameserver 8.8.8.8" > /etc/resolv.conf \
+    && echo "nameserver 8.8.4.4" >> /etc/resolv.conf
+
 # Instala las dependencias necesarias
 RUN apt-get update && apt-get install -y \
     git \
