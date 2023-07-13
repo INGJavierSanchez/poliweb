@@ -4,6 +4,8 @@ FROM ubuntu:20.04
 # Copia el archivo /etc/resolv.conf del host al contenedor
 COPY resolv.conf /etc/resolv.conf
 
+RUN sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/old-releases.ubuntu.com/g' /etc/apt/sources.list
+
 # Actualiza los repositorios e instala los paquetes necesarios
 RUN apt-get update && apt-get install -y \
     php \
