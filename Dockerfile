@@ -2,8 +2,8 @@
 FROM php:7.4-fpm
 
 # Configurar el acceso a Internet
-ENV http_proxy http://10.1.1.1:3128
-ENV https_proxy http://10.1.1.1:3128
+ENV http_proxy http://172.18.0.1:3128
+ENV https_proxy http://172.18.0.1:3128
 
 # Instala las dependencias necesarias
 RUN apt-get update && apt-get install -y \
