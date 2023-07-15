@@ -1,5 +1,5 @@
-# Imagen base
-FROM php:7.4-fpm
+#Ubuntu
+FROM ubuntu:20.04
 
 # Copia el archivo /etc/resolv.conf del host al contenedor
 #COPY resolv.conf /etc/resolv.conf
