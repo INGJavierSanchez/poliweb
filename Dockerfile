@@ -1,5 +1,5 @@
 #Ubuntu
-FROM ubuntu:20.04
+FROM ubuntu
 
 # Copia el archivo /etc/resolv.conf del host al contenedor
 #COPY resolv.conf /etc/resolv.conf
@@ -13,8 +13,7 @@ FROM ubuntu:20.04
 #Desactivarpreguntas reducirán esto presentando una lista de ciudades
 ENV DEBIAN_FRONTEND=noninteractive 
 # Actualiza los repositorios e instala los paquetes necesarios
-RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends\
+RUN apt-get update && apt-get install -y \
     php \
     php-cli \
     php-fpm \
@@ -23,8 +22,7 @@ RUN apt-get update \
     php-xml
 
 # Instala las dependencias necesarias
-RUN apt-get update \
- && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends\
+RUN apt-get update && apt-get install -y \
     git \
     curl \
     libpng-dev \
@@ -61,7 +59,7 @@ RUN chown -R www-data:www-data /var/www/storage
 # Expone el puerto 8000
 EXPOSE 8000
 
-# generar las migraciones
+# generar las migraciones 
 #RUN php artisan migrate
 
 # Inicia el servidor web de Laravel
