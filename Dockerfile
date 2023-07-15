@@ -14,7 +14,7 @@ FROM ubuntu:20.04
 ENV DEBIAN_FRONTEND=noninteractive 
 # Actualiza los repositorios e instala los paquetes necesarios
 RUN apt-get update \
- && EBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends\
+ && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends\
     php \
     php-cli \
     php-fpm \
@@ -24,7 +24,7 @@ RUN apt-get update \
 
 # Instala las dependencias necesarias
 RUN apt-get update \
- && EBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends\
+ && DEBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends\
     git \
     curl \
     libpng-dev \
