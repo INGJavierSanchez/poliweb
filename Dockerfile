@@ -33,28 +33,28 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 
 # Establece el directorio de trabajo
-WORKDIR /var/www
+#WORKDIR /var/www
 
 # Copia los archivos del proyecto al contenedor
-COPY . /var/www
+#COPY . /var/www
 
 # Copia el archivo .env al contenedor
-COPY .env.example /var/www/.env
+#COPY .env.example /var/www/.env
 
 # Instala las dependencias de Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+#RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Establece la versión específica de PHP
-RUN composer config platform.php 7.4.16
+#RUN composer config platform.php 7.4.16
 
 # Instala las dependencias del proyecto
-RUN composer install
+#RUN composer install
 
 # Genera la clave de la aplicación
-RUN php artisan key:generate
+#RUN php artisan key:generate
 
 # Establece los permisos adecuados
-RUN chown -R www-data:www-data /var/www/storage
+#RUN chown -R www-data:www-data /var/www/storage
 
 # Expone el puerto 8000
 EXPOSE 9000
