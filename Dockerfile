@@ -1,5 +1,5 @@
-#Ubuntu
-FROM ubuntu
+# Imagen base
+FROM php:7.4-fpm
 
 # Copia el archivo /etc/resolv.conf del host al contenedor
 #COPY resolv.conf /etc/resolv.conf
@@ -13,7 +13,7 @@ FROM ubuntu
 #Desactivarpreguntas reducirán esto presentando una lista de ciudades
 ENV DEBIAN_FRONTEND=noninteractive 
 # Actualiza los repositorios e instala los paquetes necesarios
-RUN apt-get install -y \
+RUN apt-get update && apt-get install -y \
     php \
     php-cli \
     php-fpm \
@@ -22,7 +22,7 @@ RUN apt-get install -y \
     php-xml
 
 # Instala las dependencias necesarias
-RUN apt-get install -y \
+RUN apt-get update && apt-get install -y \
     git \
     curl \
     libpng-dev \
