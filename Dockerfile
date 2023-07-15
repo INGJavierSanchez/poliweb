@@ -2,15 +2,16 @@
 FROM ubuntu:20.04
 
 # Copia el archivo /etc/resolv.conf del host al contenedor
-COPY resolv.conf /etc/resolv.conf
+#COPY resolv.conf /etc/resolv.conf
 
 #RUN sed -i 's/http:\/\/archive.ubuntu.com/http:\/\/old-releases.ubuntu.com/g' /etc/apt/sources.list
 
 # Configurar los servidores de repositorios
-RUN echo "deb http://archive.ubuntu.com/ubuntu focal main universe" > /etc/apt/sources.list \
-    && echo "deb http://archive.ubuntu.com/ubuntu focal-security main universe" >> /etc/apt/sources.list \
-    && echo "deb http://archive.ubuntu.com/ubuntu focal-updates main universe" >> /etc/apt/sources.list
-
+#RUN echo "deb http://archive.ubuntu.com/ubuntu focal main universe" > /etc/apt/sources.list \
+#   && echo "deb http://archive.ubuntu.com/ubuntu focal-security main universe" >> /etc/apt/sources.list \
+#  && echo "deb http://archive.ubuntu.com/ubuntu focal-updates main universe" >> /etc/apt/sources.list
+#Desactivarpreguntas reducirán esto presentando una lista de ciudades
+ENV DEBIAN_FRONTEND=noninteractive 
 # Actualiza los repositorios e instala los paquetes necesarios
 RUN apt-get update && apt-get install -y \
     php \
@@ -30,9 +31,6 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip
 
-
-# Instala las extensiones de PHP requeridas
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
 # Establece el directorio de trabajo
 WORKDIR /var/www
@@ -60,6 +58,9 @@ RUN chown -R www-data:www-data /var/www/storage
 
 # Expone el puerto 8000
 EXPOSE 8000
+
+# generar las migraciones
+#RUN php artisan migrate
 
 # Inicia el servidor web de Laravel
 CMD php artisan serve --host=0.0.0.0 --port=8000

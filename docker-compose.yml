@@ -1,4 +1,4 @@
-version: '3'
+version: '3.7'
 services:
   app:
     build:
@@ -6,5 +6,28 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8000:8000
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Javier_1052
+      MYSQL_DB: bd_politecnico
     volumes:
       - .:/var/www
+
+  mysql:
+    image: mysql:5.7
+    volumes:
+      - ./data-mysql:/var/lib/mysql
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Javier_1052
+      MYSQL_ROOT_PASSWORD: Javier_1052
+      MYSQL_DATABASE: bd_politecnico
+
+  phpmyadmin:
+    image: phpmyadmin:5.2-apache
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      - PMA_ARBITRARY=1
