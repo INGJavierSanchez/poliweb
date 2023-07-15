@@ -13,7 +13,8 @@ FROM ubuntu:20.04
 #Desactivarpreguntas reducirán esto presentando una lista de ciudades
 ENV DEBIAN_FRONTEND=noninteractive 
 # Actualiza los repositorios e instala los paquetes necesarios
-RUN apt-get update && apt-get install -y \
+RUN apt-get update \
+ && EBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends\
     php \
     php-cli \
     php-fpm \
@@ -22,7 +23,8 @@ RUN apt-get update && apt-get install -y \
     php-xml
 
 # Instala las dependencias necesarias
-RUN apt-get update && apt-get install -y \
+RUN apt-get update \
+ && EBIAN_FRONTEND=noninteractive apt-get -y --no-install-recommends\
     git \
     curl \
     libpng-dev \
