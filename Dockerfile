@@ -13,23 +13,23 @@ FROM ubuntu:20.04
 #Desactivarpreguntas reducirán esto presentando una lista de ciudades
 ENV DEBIAN_FRONTEND=noninteractive 
 # Actualiza los repositorios e instala los paquetes necesarios
-RUN apt-get update && apt-get install -y \
-    php \
-    php-cli \
-    php-fpm \
-    php-mysql \
-    php-mbstring \
-    php-xml
+#RUN apt-get update && apt-get install -y \
+#    php \
+#    php-cli \
+#    php-fpm \
+#    php-mysql \
+#    php-mbstring \
+#    php-xml
 
 # Instala las dependencias necesarias
-RUN apt-get update && apt-get install -y \
-    git \
-    curl \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip \
-    unzip
+#RUN apt-get update && apt-get install -y \
+#    git \
+#    curl \
+#    libpng-dev \
+#    libonig-dev \
+#    libxml2-dev \
+#    zip \
+#    unzip
 
 
 # Establece el directorio de trabajo
@@ -57,10 +57,10 @@ RUN php artisan key:generate
 RUN chown -R www-data:www-data /var/www/storage
 
 # Expone el puerto 8000
-EXPOSE 8000
+EXPOSE 9000
 
 # generar las migraciones 
 #RUN php artisan migrate
 
 # Inicia el servidor web de Laravel
-CMD php artisan serve --host=0.0.0.0 --port=8000
+#CMD php artisan serve --host=0.0.0.0 --port=9000

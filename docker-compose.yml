@@ -1,5 +1,18 @@
 version: '3.7'
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    environment:
+      MYSQL_HOST: mysql
+      MYSQL_USER: root
+      MYSQL_PASSWORD: Javier_1052
+      MYSQL_DB: bd_politecnico
+    volumes:
+      - .:/var/www
 
   mysql:
     image: mysql:5.7
