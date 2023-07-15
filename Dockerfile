@@ -13,23 +13,6 @@ FROM ubuntu
 #Desactivarpreguntas reducirán esto presentando una lista de ciudades
 ENV DEBIAN_FRONTEND=noninteractive 
 # Actualiza los repositorios e instala los paquetes necesarios
-RUN apt-get update && apt-get install -y \
-    php \
-    php-cli \
-    php-fpm \
-    php-mysql \
-    php-mbstring \
-    php-xml
-
-# Instala las dependencias necesarias
-RUN apt-get update && apt-get install -y \
-    git \
-    curl \
-    libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    zip \
-    unzip
 
 
 # Establece el directorio de trabajo
