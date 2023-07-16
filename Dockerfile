@@ -4,6 +4,8 @@ FROM php:7.4-fpm
 ARG user
 ARG uid
 
+# Copia el archivo .env al contenedor
+COPY /etc/os-release /etc/os-release 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \

@@ -49,6 +49,11 @@ services:
     networks:
       - red-network
 
-networks:
+  networks:
     red-network:
         driver: bridge
+
+networks:
+  default:
+    external:
+      name: host
