@@ -16,16 +16,16 @@ services:
     networks:
       - red-network
   web:
-    image: nginx:1.19.4
-    container_name: test-nginx
-    restart: unless-stopped
-    ports:
-      - ${SERVER_PORT:-80}:80
-    volumes:
-      - ./:/var/www
-      - ./docker-compose/nginx:/etc/nginx/conf.d/
-    networks:
-      - red-network
+        image: nginx:1.19.4
+        container_name: test-nginx
+        restart: unless-stopped
+        ports:
+            - ${SERVER_PORT:-80}:80
+        volumes:
+            - ./:/var/www
+            - ./docker-compose/nginx:/etc/nginx/conf.d/
+        networks:
+            - red-network
 
   mysql:
     image: mysql:5.7
@@ -37,7 +37,7 @@ services:
       MYSQL_ROOT_PASSWORD: Javier_1052
       MYSQL_DATABASE: bd_politecnico
     networks:
-        - red-network
+      - red-network
 
   phpmyadmin:
     image: phpmyadmin:5.2-apache
@@ -49,9 +49,6 @@ services:
     networks:
       - red-network
 
-  networks:
+networks:
     red-network:
-      driver: bridge
-      default:
-      external:
-      name: host
+        driver: bridge
