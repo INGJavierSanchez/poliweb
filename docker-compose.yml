@@ -13,6 +13,7 @@ services:
       MYSQL_DB: bd_politecnico
     volumes:
       - .:/var/www
+    network_mode: "host"
     networks:
       - red-network
   web:
@@ -48,10 +49,7 @@ services:
       - PMA_ARBITRARY=1
     networks:
       - red-network
-    
 
 networks:
-  default:
-    external:
-      name: red-network
-    
+    red-network:
+        driver: bridge
