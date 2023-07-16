@@ -13,6 +13,7 @@ services:
       MYSQL_DB: bd_politecnico
     volumes:
       - .:/var/www
+    --network: host
     networks:
       - red-network
   web:
@@ -24,7 +25,8 @@ services:
         volumes:
             - ./:/var/www
             - ./docker-compose/nginx:/etc/nginx/conf.d/
-        network_mode: "host"
+        networks:
+            - red-network
 
   mysql:
     image: mysql:5.7
