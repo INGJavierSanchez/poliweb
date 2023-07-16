@@ -48,7 +48,11 @@ services:
       - PMA_ARBITRARY=1
     networks:
       - red-network
+    
 
 networks:
-    red-network:
+  default:
+    external:
+      name: host
+      red-network:
         driver: bridge
