@@ -13,7 +13,6 @@ services:
       MYSQL_DB: bd_politecnico
     volumes:
       - .:/var/www
-    --network: host
     networks:
       - red-network
   web:
