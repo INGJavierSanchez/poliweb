@@ -48,11 +48,13 @@ RUN php artisan key:generate
 # Establece los permisos adecuados
 RUN chown -R www-data:www-data /var/www/storage
 
+# Establece los permisos adecuados
+#RUN chown -R $user:$user /var/www
 # Expone el puerto 8000
-#EXPOSE 8000
+EXPOSE 8000
 
 # generar las migraciones 
 #RUN php artisan migrate
 
 # Inicia el servidor web de Laravel
-#CMD php artisan serve --host=0.0.0.0 --port=8000
+CMD php artisan serve --host=0.0.0.0 --port=8000

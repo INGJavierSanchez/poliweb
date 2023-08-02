@@ -8,7 +8,6 @@ services:
       - 8000:8000
     environment:
       MYSQL_HOST: mysql
-      MYSQL_USER: root
       MYSQL_PASSWORD: Javier_1052
       MYSQL_DB: bd_politecnico
     volumes:
@@ -29,10 +28,10 @@ services:
 
   mysql:
     image: mysql:5.7
+    restart: always
     volumes:
       - ./data-mysql:/var/lib/mysql
     environment:
-      MYSQL_USER: root
       MYSQL_PASSWORD: Javier_1052
       MYSQL_ROOT_PASSWORD: Javier_1052
       MYSQL_DATABASE: bd_politecnico
