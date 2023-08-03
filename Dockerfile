@@ -45,6 +45,15 @@ RUN composer install
 # Genera la clave de la aplicación
 RUN php artisan key:generate
 
+# actualizar el autoloade
+RUN composer dump-autoload
+
+
+# limpiar la cache de rutas
+RUN php artisan route:clear
+
+
+
 # Establece los permisos adecuados
 RUN chown -R www-data:www-data /var/www/storage
 

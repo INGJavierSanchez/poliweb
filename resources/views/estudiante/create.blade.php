@@ -1,5 +1,6 @@
 @extends('adminlte::page')
 
+
 @section('title', 'Crear a un estudiante')
 
 @section('content_header')
@@ -66,12 +67,21 @@
                     <input type="text" name="direccion" class="form-control" id="direccion" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="barrio">Barrio</label>
-                    <input type="text" name="barrio" class="form-control" id="barrio" required>
-                </div>
-
-                <div class="form-group">
+                        <div class="form-group">
+                            <label for="departamento">Departamento:</label>
+                            <select id="departamento" class="form-control">
+                                <option value="">Seleccione un departamento</option>
+                                @foreach(json_decode($datosDepartamento) as $item)
+                                    <option value="{{ $item->id }}">{{ $item->departamento }}</option>
+                                @endforeach
+                            </select>
+                
+                            <label for="ciudad">Ciudad:</label>
+                            <select id="ciudad" class="form-control" disabled>
+                                <option value="">Seleccione una ciudad</option>
+                            </select>
+               </div>
+         {{--        <div class="form-group">
                     <label for="municipio">Municipio</label>
                     <input type="text" name="municipio" class="form-control" id="municipio" required>
                 </div>
@@ -79,7 +89,7 @@
                 <div class="form-group">
                     <label for="departamento">Departamento</label>
                     <input type="text" name="departamento" class="form-control" id="departamento" required>
-                </div>
+                </div> --}}
 
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -222,4 +232,42 @@
             </form>
         </div>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Manejar el evento de cambio en el select de departamentos
+            $('#departamento').change(function () {
+                var departamentoId = $(this).val();
+    
+                // Limpiar el select de ciudades
+                $('#ciudad').empty();
+    
+                if (departamentoId !== '') {
+                    // Realizar la solicitud AJAX para obtener las ciudades del departamento seleccionado
+                    $.ajax({
+                        url: '/ciudades/' + departamentoId,
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            // Habilitar el select de ciudades
+                            $('#ciudad').prop('disabled', false);
+    
+                            // Agregar las opciones de ciudades al select
+                            $.each(data, function (index, ciudad) {
+                                $('#ciudad').append('<option value="' + ciudad + '">' + ciudad + '</option>');
+                            });
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(xhr.responseText);
+                        }
+                    });
+                } else {
+                    // Si no se selecciona ningún departamento, deshabilitar y limpiar el select de ciudades
+                    $('#ciudad').prop('disabled', true);
+                }
+            });
+        });
+    </script>
+    
 @endsection
