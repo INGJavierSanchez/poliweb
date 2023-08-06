@@ -54,12 +54,16 @@
 
                 <div class="form-group">
                     <label for="edad">Edad</label>
-                    <input type="number" name="edad" class="form-control" id="edad" required>
+                    <input type="number" name="edad" class="form-control" id="edad" disabled required>
                 </div>
 
                 <div class="form-group">
                     <label for="num_identificacion">Número de Identificación</label>
                     <input type="text" name="num_identificacion" class="form-control" id="num_identificacion" required>
+                </div>
+                <div class="form-group">
+                    <label for="val_num_identificacion">Validar Número de Identificación</label>
+                    <input type="text" name="val_num_identificacion" class="form-control" id="val_num_identificacion" required>
                 </div>
 
                 <div class="form-group">
@@ -81,15 +85,6 @@
                                 <option value="">Seleccione una ciudad</option>
                             </select>
                </div>
-         {{--        <div class="form-group">
-                    <label for="municipio">Municipio</label>
-                    <input type="text" name="municipio" class="form-control" id="municipio" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="departamento">Departamento</label>
-                    <input type="text" name="departamento" class="form-control" id="departamento" required>
-                </div> --}}
 
                 <div class="form-group">
                     <label for="email">Email</label>
@@ -97,9 +92,16 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="ocupacion_actual">Ocupación Actual</label>
-                    <input type="text" name="ocupacion_actual" class="form-control" id="ocupacion_actual" required>
+                    <div class="form-group">
+                        <label for="ocupacion_actual">Ocupacion Actual:</label>
+                        <select id="ocupacion_actual" class="form-control">
+                            <option value="">Seleccione un categoría</option>
+                            @foreach(json_decode($ocupacionesColombia) as $ocupacion)
+                            <option value="{{ $ocupacion->id }}">{{ $ocupacion->ocupacion }}</option>
+                            @endforeach
+                        </select>
                 </div>
+            
 
                 <div class="form-group">
                     <label for="telefono">Teléfono</label>
@@ -112,8 +114,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="sisben">Sisben</label>
-                    <input type="number" name="sisben" class="form-control" id="sisben" required>
+                    <div class="form-group">
+                        <label for="siben">Sisben:</label>
+                        <select id="siben" class="form-control">
+                            <option value="">Seleccione un categoría</option>
+                            @foreach(json_decode($categoriasSisben) as $categoria)
+                            <option value="{{ $categoria->id }}">{{ $categoria->categoria }}</option>
+                            @endforeach
+                        </select>
                 </div>
 
                 <div class="form-group">
@@ -127,8 +135,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="estado_civil">Estado Civil</label>
-                    <input type="text" name="estado_civil" class="form-control" id="estado_civil" required>
+                    <label for="estado_civil">Estado Civil:</label>
+                    <select id="siben" class="form-control">
+                        <option value="">Seleccione un Estado Civil</option>
+                        <option value="casado">casado</option>
+                        <option value="soltero">soltero</option>
+                        <option value="viudo">viudo</option>
+                        <option value="separado">separado</option>
+                        <option value="divorciado">divorciado</option>
+                        
+                    </select>
+                
                 </div>
 
                 <div class="form-group">
@@ -163,7 +180,14 @@
 
                 <div class="form-group">
                     <label for="acudiente_sexo">Sexo del Acudiente</label>
-                    <input type="text" name="acudiente_sexo" class="form-control" id="acudiente_sexo" required>
+                    <select id="siben" class="form-control">
+                        <option value="">Seleccione un Sexo</option>
+                        <option value="hombre">hombre</option>
+                        <option value="mujer">mujer</option>
+                    
+                        
+                    </select>
+                   
                 </div>
 
                 <div class="form-group">
@@ -270,4 +294,115 @@
         });
     </script>
     
+    <script>
+        // Evento que se dispara cuando cambia la fecha de nacimiento
+        $(document).on('change', '#fecha_nacimiento', function() {
+            // Obtener el valor de la fecha de nacimiento
+            const fechaNacimiento = $(this).val();
+    
+            // Calcular la edad en años
+            const edad = calcularEdad(fechaNacimiento);
+    
+            // Actualizar el campo de entrada de edad
+            $('#edad').val(edad);
+        });
+    
+        // Función para calcular la edad en años
+        function calcularEdad(fechaNacimiento) {
+            const fechaActual = new Date();
+            const fechaNac = new Date(fechaNacimiento);
+            let edad = fechaActual.getFullYear() - fechaNac.getFullYear();
+    
+            // Restar un año si la fecha actual es anterior al cumpleaños
+            if (fechaActual.getMonth() < fechaNac.getMonth() ||
+                (fechaActual.getMonth() === fechaNac.getMonth() && fechaActual.getDate() < fechaNac.getDate())) {
+                edad--;
+            }
+    
+            return edad;
+        }
+    </script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
+<script>
+    // Evento que se dispara cuando cambia la fecha de nacimiento
+    $(document).on('change', '#fecha_nacimiento', function() {
+        // Obtener el valor de la fecha de nacimiento
+        const fechaNacimiento = $(this).val();
+
+        // Calcular la edad en años
+        const edad = calcularEdad(fechaNacimiento);
+
+        // Actualizar el campo de entrada de edad
+        $('#edad').val(edad);
+
+        // Mostrar notificación según la edad
+        if (edad >= 18) {
+            Swal.fire({
+                title: '¡Mayor de edad!',
+                text: '¡Felicidades! Eres mayor de edad.',
+                icon: 'success'
+            });
+        } else {
+            Swal.fire({
+                title: '¡Menor de edad!',
+                text: 'Eres menor de edad. Por favor, ten en cuenta las restricciones para menores.',
+                icon: 'warning'
+            });
+        }
+    });
+
+    // Función para calcular la edad en años
+    function calcularEdad(fechaNacimiento) {
+        const fechaActual = new Date();
+        const fechaNac = new Date(fechaNacimiento);
+        let edad = fechaActual.getFullYear() - fechaNac.getFullYear();
+
+        // Restar un año si la fecha actual es anterior al cumpleaños
+        if (fechaActual.getMonth() < fechaNac.getMonth() ||
+            (fechaActual.getMonth() === fechaNac.getMonth() && fechaActual.getDate() < fechaNac.getDate())) {
+            edad--;
+        }
+
+        return edad;
+    }
+</script>
+
+
+<script>
+    // Evento que se dispara cuando cambia el campo de val_num_identificacion
+    $(document).on('keyup', '#val_num_identificacion', function() {
+        // Obtener el valor de num_identificacion y val_num_identificacion
+        const numIdentificacion = $('#num_identificacion').val();
+        const valNumIdentificacion = $(this).val();
+
+        // Verificar si los campos son iguales cuando tengan la misma cantidad de caracteres
+        if (valNumIdentificacion.length === numIdentificacion.length && valNumIdentificacion !== numIdentificacion) {
+            Swal.fire({
+                title: '¡Error!',
+                text: 'El número de identificación no coincide.',
+                icon: 'error'
+            });
+        }
+    });
+</script>
+
+<script>
+    // Evento que se dispara cuando cambia el campo de val_num_identificacion
+    $(document).on('keyup', '#val_num_identificacion', function() {
+        // Obtener el valor de num_identificacion y val_num_identificacion
+        const numIdentificacion = $('#num_identificacion').val();
+        const valNumIdentificacion = $(this).val();
+
+        // Verificar si los campos son iguales cuando tengan la misma cantidad de caracteres
+        if (valNumIdentificacion.length === numIdentificacion.length && valNumIdentificacion === numIdentificacion) {
+            Swal.fire({
+                title: '¡Éxito!',
+                text: 'El número de identificación coincide.',
+                icon: 'success'
+            });
+        }
+    });
+</script>
+
 @endsection
