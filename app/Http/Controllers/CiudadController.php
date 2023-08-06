@@ -22,7 +22,7 @@ class CiudadController extends Controller
 
         //dd($departamentoId);
         // Simulamos una demora de 1 segundo para demostrar el uso de AJAX.
-        sleep(1);
+       // sleep(1);
          // Convierte el JSON en un array asociativo
         $departamentos = json_decode($data, true);
         //
