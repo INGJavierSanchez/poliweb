@@ -231,7 +231,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="acudiente_sisben">Sisben del Acudiente</label>
+                    <label for="acudiente_sisben">Sisben del Acudiente:</label>
                     <select id="acudiente_sisben" class="form-control">
                         <option value="">Seleccione un categoría</option>
                         @foreach(json_decode($categoriasSisben) as $categoria)
