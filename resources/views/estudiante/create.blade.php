@@ -205,19 +205,36 @@
                     <input type="text" name="acudiente_barrio" class="form-control" id="acudiente_barrio" required>
                 </div>
 
-                <div class="form-group">
-                    <label for="acudiente_municipio">Municipio del Acudiente</label>
-                    <input type="text" name="acudiente_municipio" class="form-control" id="acudiente_municipio" required>
-                </div>
+               
 
                 <div class="form-group">
                     <label for="acudiente_departamento">Departamento del Acudiente</label>
-                    <input type="text" name="acudiente_departamento" class="form-control" id="acudiente_departamento" required>
+                    <select id="acudiente_departamento" class="form-control">
+                        <option value="">Seleccione un departamento</option>
+                        @foreach(json_decode($datosDepartamento) as $item)
+                            <option value="{{ $item->id }}">{{ $item->departamento }}</option>
+                        @endforeach
+                    </select>
+                   
+                </div>
+
+                <div class="form-group">
+                    <label for="acudiente_municipio">Municipio del Acudiente</label>
+                    <select id="acudiente_municipio" class="form-control" disabled>
+                        <option value="">Seleccione una ciudad</option>
+                    </select>
+                    
                 </div>
 
                 <div class="form-group">
                     <label for="acudiente_ocupacion_actual">Ocupación Actual del Acudiente</label>
-                    <input type="text" name="acudiente_ocupacion_actual" class="form-control" id="acudiente_ocupacion_actual" required>
+                    <select id="acudiente_ocupacion_actual" class="form-control">
+                        <option value="">Seleccione un categoría</option>
+                        @foreach(json_decode($ocupacionesColombia) as $ocupacion)
+                        <option value="{{ $ocupacion->id }}">{{ $ocupacion->ocupacion }}</option>
+                        @endforeach
+                    </select>
+                    
                 </div>
 
                 <div class="form-group">
@@ -264,6 +281,7 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
     <script>
         $(document).ready(function () {
             // Manejar el evento de cambio en el select de departamentos
@@ -299,6 +317,42 @@
             });
         });
     </script>
+
+<script>
+    $(document).ready(function () {
+        // Manejar el evento de cambio en el select de departamentos
+        $('#acudiente_departamento').change(function () {
+            var departamentoId = $(this).val();
+
+            // Limpiar el select de ciudades
+            $('#acudiente_municipio').empty();
+
+            if (departamentoId !== '') {
+                // Realizar la solicitud AJAX para obtener las ciudades del departamento seleccionado
+                $.ajax({
+                    url: '/ciudades/' + departamentoId,
+                    type: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        // Habilitar el select de ciudades
+                        $('#acudiente_municipio').prop('disabled', false);
+
+                        // Agregar las opciones de ciudades al select
+                        $.each(data, function (index, ciudad) {
+                            $('#acudiente_municipio').append('<option value="' + ciudad + '">' + ciudad + '</option>');
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            } else {
+                // Si no se selecciona ningún departamento, deshabilitar y limpiar el select de ciudades
+                $('#acudiente_municipio').prop('disabled', true);
+            }
+        });
+    });
+</script>
     
     <script>
         // Evento que se dispara cuando cambia la fecha de nacimiento
