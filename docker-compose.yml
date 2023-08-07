@@ -8,6 +8,7 @@ services:
       - 8000:8000
     environment:
       MYSQL_HOST: mysql
+      #MYSQL_PASSWORD: Javier_1052
       MYSQL_PASSWORD: Javier_1052
       MYSQL_DB: bd_politecnico
     volumes:
