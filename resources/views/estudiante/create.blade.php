@@ -45,6 +45,19 @@
                 <div class="form-group">
                     <label for="apellido2">Segundo Apellido</label>
                     <input type="text" name="apellido2" class="form-control" id="apellido2">
+                    
+                </div>
+
+                <div class="form-group">
+                    <label for="estudiante_sexo">Sexo del Estudiante</label>
+                    <select id="siben" class="form-control">
+                        <option value="">Seleccione un Sexo</option>
+                        <option value="hombre">hombre</option>
+                        <option value="mujer">mujer</option>
+                    
+                        
+                    </select>
+                   
                 </div>
 
                 <div class="form-group">
@@ -265,7 +278,37 @@
 
                 <div class="form-group">
                     <label for="servicio_solicitado">Servicio Solicitado</label>
-                    <input type="text" name="servicio_solicitado" class="form-control" id="servicio_solicitado" required>
+                    <select id="servicio_solicitado" class="form-control">
+                        <option value="">Seleccione Servicio</option>
+                        <option value="primaria">primaria</option>
+                        <option value="bachilerato">bachilerato</option>
+                       
+                        <option value="bachilerato-normal">bachilerato-normal</option>
+                        <option value="bachilerato">======</option>
+
+                        <option value="bachilerato-normal6">bachilerato-normal6</option>
+                        <option value="bachilerato-normal7">bachilerato-normal7</option>
+                        <option value="bachilerato-normal8">bachilerato-normal8</option>
+                        <option value="bachilerato-normal9">bachilerato-normal9</option>
+                        <option value="bachilerato-normal10">bachilerato-normal10</option>
+                        <option value="bachilerato-ciclo11">bachilerato-normal11</option>
+
+                        <option value="bachilerato-ciclo">bachilerato-ciclo</option>
+                        <option value="bachilerato">======</option>
+                        <option value="bachilerato-ciclo6">bachilerato-ciclo6</option>
+                        <option value="bachilerato-ciclo7">bachilerato-ciclo7</option>
+                        <option value="bachilerato-ciclo8">bachilerato-ciclo8</option>
+                        <option value="bachilerato-ciclo9">bachilerato-ciclo9</option>
+                        <option value="bachilerato-ciclo10">bachilerato-ciclo10</option>
+                        <option value="bachilerato-ciclo11">bachilerato-ciclo11</option>
+
+                        <option value="curso_espezializado">mujer</option>
+                        <option value="carrera_tecnica">mujer</option>
+                        <option value="diplomado">mujer</option>
+                    
+                        
+                    </select>
+                    
                 </div>
 
                 <div class="form-group">
