@@ -33,11 +33,11 @@ services:
     volumes:
       - ./data-mysql:/var/lib/mysql
     environment:
-      MYSQL_USER: fabian
-      MYSQL_PASSWORD: Fabian_1052
-      MYSQL_ROOT_PASSWORD: Fabian_1052
-      #MYSQL_PASSWORD: Javier_1052
-      #MYSQL_ROOT_PASSWORD: Javier_1052
+      #MYSQL_USER: fabian
+      #MYSQL_PASSWORD: Fabian_1052
+      #MYSQL_ROOT_PASSWORD: Fabian_1052
+      MYSQL_PASSWORD: Javier_1052
+      MYSQL_ROOT_PASSWORD: Javier_1052
       MYSQL_DATABASE: bd_politecnico
     networks:
       - red-network
