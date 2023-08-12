@@ -19,7 +19,7 @@
                 <!-- Agrega aquí los campos del formulario -->
                 <div class="form-group">
                     <label for="codigo">Código</label>
-                    <input type="text" name="codigo" class="form-control" id="codigo" required>
+                    <input type="text" name="codigo" class="form-control" id="codigo" disabled>
                 </div>
                 <div class="form-group">
                     <label for="servicio_solicitado">Servicio Solicitado</label>
@@ -47,9 +47,9 @@
                         <option value="bachilerato-ciclo10">bachilerato-ciclo10</option>
                         <option value="bachilerato-ciclo11">bachilerato-ciclo11</option>
 
-                        <option value="curso_espezializado">mujer</option>
-                        <option value="carrera_tecnica">mujer</option>
-                        <option value="diplomado">mujer</option>
+                        <option value="curso_especializado">Curso Especializado</option>
+                        <option value="carrera_tecnica">Carrera Técnica</option>
+                        <option value="diplomado">Diplomado</option>
                     
                         
                     </select>
@@ -85,8 +85,8 @@
                     <label for="estudiante_sexo">Sexo del Estudiante</label>
                     <select id="siben" class="form-control">
                         <option value="">Seleccione un Sexo</option>
-                        <option value="hombre">hombre</option>
-                        <option value="mujer">mujer</option>
+                        <option value="hombre">HOMBRE</option>
+                        <option value="mujer">MUJER</option>
                     
                         
                     </select>
@@ -134,7 +134,7 @@
 
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" name="email" class="form-control" id="email" required>
+                    <input type="email" name="email" class="form-control" id="email" required onblur="validateEmail(this)"> 
                 </div>
 
                 <div class="form-group">
@@ -151,7 +151,7 @@
 
                 <div class="form-group">
                     <label for="telefono">Teléfono</label>
-                    <input type="text" name="telefono" class="form-control" id="telefono" required>
+                    <input type="tel" name="telefono" class="form-control" id="telefono" required oninput="formatPhoneNumber(this)">
                 </div>
 
                 <div class="form-group">
@@ -172,7 +172,11 @@
 
                 <div class="form-group">
                     <label for="desplazado">Desplazado</label>
-                    <input type="text" name="desplazado" class="form-control" id="desplazado" required>
+                    <select id="desplazado" class="form-control">
+                        <option value="">Seleccione un SI o NO</option>
+                        <option value="si">SI</option>
+                        <option value="no">NO</option>                      
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -184,11 +188,11 @@
                     <label for="estado_civil">Estado Civil:</label>
                     <select id="siben" class="form-control">
                         <option value="">Seleccione un Estado Civil</option>
-                        <option value="casado">casado</option>
-                        <option value="soltero">soltero</option>
-                        <option value="viudo">viudo</option>
-                        <option value="separado">separado</option>
-                        <option value="divorciado">divorciado</option>
+                        <option value="soltero">SOLTERO</option>
+                        <option value="casado">CASADO</option>                       
+                        <option value="viudo">VIUDO</option>
+                        <option value="separado">SEPARADO</option>
+                        <option value="divorciado">DIVORCIADO</option>
                         
                     </select>
                 
@@ -215,8 +219,14 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="acudiente_escolaridad">Escolaridad del Acudiente</label>
-                    <input type="text" name="acudiente_escolaridad" class="form-control" id="acudiente_escolaridad" required>
+                    <label for="acudiente_escolaridad">Escolaridad del Acudiente:</label>
+                    <select id="acudiente_escolaridad" class="form-control">
+                        <option value="">Seleccione Escolaridad: </option>
+                        @foreach(json_decode($niveles_escolaridad) as $escolaridad)
+                        <option value="{{ $escolaridad->id }}">{{ $escolaridad->nivel }}</option>
+                        @endforeach
+                    </select>
+
                 </div>
 
                 <div class="form-group">
@@ -228,10 +238,8 @@
                     <label for="acudiente_sexo">Sexo del Acudiente</label>
                     <select id="siben" class="form-control">
                         <option value="">Seleccione un Sexo</option>
-                        <option value="hombre">hombre</option>
-                        <option value="mujer">mujer</option>
-                    
-                        
+                        <option value="hombre">HOMBRE</option>
+                        <option value="mujer">MUJER</option>                      
                     </select>
                    
                 </div>
@@ -285,7 +293,7 @@
 
                 <div class="form-group">
                     <label for="acudiente_telefono">Teléfono del Acudiente</label>
-                    <input type="text" name="acudiente_telefono" class="form-control" id="acudiente_telefono" required>
+                    <input type="tel" name="acudiente_telefono" class="form-control" id="acudiente_telefono" required oninput="formatPhoneNumber(this)">
                 </div>
 
                 <div class="form-group">
@@ -305,8 +313,12 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="acudiente_desplazado">Desplazado del Acudiente</label>
-                    <input type="text" name="acudiente_desplazado" class="form-control" id="acudiente_desplazado" required>
+                    <label for="acudiente_desplazado">¿El Acudiente es Desplazado?</label>
+                    <select id="acudiente_desplazado" class="form-control">
+                        <option value="no">NO</option>   
+                        <option value="si">SI</option>
+                                          
+                    </select>
                 </div>
 
               
@@ -506,6 +518,36 @@
             });
         }
     });
+</script>
+
+
+<script>
+    function formatPhoneNumber(input) {
+        const value = input.value.replace(/\D/g, ''); // Elimina los caracteres no numéricos
+        if (value.length <= 3) {
+            input.value = value;
+        } else if (value.length <= 6) {
+            input.value = `${value.slice(0, 3)}-${value.slice(3)}`;
+        } else {
+            input.value = `${value.slice(0, 3)}-${value.slice(3, 6)}-${value.slice(6, 10)}`;
+        }
+    }
+</script>
+
+<script>
+    function validateEmail(input) {
+        const emailValue = input.value;
+        if (!emailValue.includes('@')) {
+            // Muestra un modal con SweetAlert2
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Por favor, ingrese una dirección de correo electrónico válida.'
+            }).then(() => {
+                input.focus(); // Devuelve el foco al campo de correo electrónico
+            });
+        }
+    }
 </script>
 
 @endsection

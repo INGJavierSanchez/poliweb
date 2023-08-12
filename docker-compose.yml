@@ -9,7 +9,7 @@ services:
     environment:
       MYSQL_HOST: mysql
       #MYSQL_PASSWORD: Javier_1052
-      MYSQL_PASSWORD: Javier_1052
+      MYSQL_PASSWORD: Fabian_1052
       MYSQL_DB: bd_politecnico
     volumes:
       - .:/var/www

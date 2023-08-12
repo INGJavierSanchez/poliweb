@@ -124,14 +124,31 @@ class EstudianteController extends Controller
             {"id": 30, "ocupacion": "Otra ocupacion"}
           ]' ;
           
+          
+            $niveles_escolaridad = '[
+                { "id": 1, "nivel": "Sin educación formal" },
+                { "id": 2, "nivel": "Educación primaria incompleta" },
+                { "id": 3, "nivel": "Educación primaria completa" },
+                { "id": 4, "nivel": "Educación secundaria incompleta" },
+                { "id": 5, "nivel": "Educación secundaria completa" },
+                { "id": 6, "nivel": "Educación técnica o profesional incompleta" },
+                { "id": 7, "nivel": "Educación técnica o profesional completa" },
+                { "id": 8, "nivel": "Educación universitaria incompleta" },
+                { "id": 9, "nivel": "Educación universitaria completa" },
+                { "id": 10, "nivel": "Posgrado o maestría" },
+                { "id": 11, "nivel": "Doctorado" }
+            ]' ;
         
-
+            $registro = new Estudiante();
+            $ultimoId = $registro->latest('id')->first()->id ?? 0; // Obtener el último ID
+                dd($registro);
         //$categoriasSisben = json_decode(json_encode($categorias, true));
 
         return view('estudiante.create')->with([
             'datosDepartamento' => $datosDepartamento,
             'categoriasSisben' => $categoriasSisben,
             'ocupacionesColombia' => $ocupacionesColombia,
+            'niveles_escolaridad' => $niveles_escolaridad,
         ]);
     }
     /**
