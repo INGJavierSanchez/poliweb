@@ -454,14 +454,14 @@
         // Mostrar notificación según la edad
         if (edad >= 18) {
             Swal.fire({
-                title: '¡edad!',
-                text: 'La perosna es mayor de edad.',
+                title: '¡Mayor de edad!',
+                text: '¡Felicidades! Eres mayor de edad.',
                 icon: 'success'
             });
         } else {
             Swal.fire({
-                title: '¡edad!',
-                text: 'Es menor de edad. Por favor, ten en cuenta las restricciones para menores.',
+                title: '¡Menor de edad!',
+                text: 'Eres menor de edad. Por favor, ten en cuenta las restricciones para menores.',
                 icon: 'warning'
             });
         }

@@ -18,6 +18,7 @@ Route::get('/', function () {
 });
 
 Route::resource('estudiantes','App\Http\Controllers\EstudianteController');
+Route::resource('acudientes','App\Http\Controllers\AcudienteController');
 Route::get('/ciudades/{departamentoId}', 'App\Http\Controllers\CiudadController@getCiudades');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

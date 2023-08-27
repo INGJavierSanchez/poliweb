@@ -232,9 +232,9 @@ return [
 
     'menu' => [
         [
-            'text' => 'search',
-            'search' => false,
-            'topnav' => true,
+            'text' => 'Buscar',
+            'search' => true,
+            'topnav' => false,
         ],
         [
             'text' => 'blog',
@@ -252,7 +252,14 @@ return [
         [
             'text'        => 'Estudiantes',
             'url'         => 'estudiantes',
-            'icon'        => 'far fa-fw fa-file',
+            'icon'        => 'fas fa-user-plus',
+            'label'       => 'CRUD',
+            'label_color' => 'success',
+        ],
+        [
+            'text'        => 'Acudientes',
+            'url'         => 'acudientes',
+            'icon'        => 'fas fa-restroom',
             'label'       => 'CRUD',
             'label_color' => 'success',
         ],
@@ -267,7 +274,7 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
-        [
+     /*   [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',
             'submenu' => [
@@ -320,7 +327,7 @@ return [
             'text'       => 'information',
             'icon_color' => 'cyan',
             'url'        => '#',
-        ],
+        ], */
     ],
 
     /*

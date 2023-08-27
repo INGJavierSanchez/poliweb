@@ -1,65 +1,36 @@
 @extends('adminlte::page')
 
 
-@section('title', 'Crear a un estudiante')
+@section('title', 'Crear a un acudiente')
 
 @section('content_header')
-   <h1>Crear estudiante</h1>
+   <h1>Crear acudiente</h1>
 @stop
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Crear Estudiante</h3>
+            <h3 class="card-title">Crear Acudiente</h3>
         </div>
         <div class="card-body">
-            <form action="{{ route('estudiantes.store') }}" method="POST">
+            <form action="{{ route('acudientes.store') }}" method="POST">
                 @csrf
 
                 <!-- Agrega aquí los campos del formulario -->
                 <div class="form-group">
-                    <label for="codigo">Código</label>
-                    <input type="text" name="codigo" class="form-control" id="codigo" disabled>
+                    <label for="codigo">Código Del estudiante</label>
+                    <input type="text" name="codigo" class="form-control" id="codigo" enable>
                 </div>
+           
                 <div class="form-group">
-                    <label for="servicio_solicitado">Servicio Solicitado</label>
-                    <select id="servicio_solicitado" class="form-control">
-                        <option value="">Seleccione Servicio</option>
-                        <option value="primaria">primaria</option>
-                        <option value="bachilerato">bachilerato</option>
-                       
-                        <option value="bachilerato-normal">bachilerato-normal</option>
-                        <option value="bachilerato">======</option>
-
-                        <option value="bachilerato-normal6">bachilerato-normal6</option>
-                        <option value="bachilerato-normal7">bachilerato-normal7</option>
-                        <option value="bachilerato-normal8">bachilerato-normal8</option>
-                        <option value="bachilerato-normal9">bachilerato-normal9</option>
-                        <option value="bachilerato-normal10">bachilerato-normal10</option>
-                        <option value="bachilerato-ciclo11">bachilerato-normal11</option>
-
-                        <option value="bachilerato-ciclo">bachilerato-ciclo</option>
-                        <option value="bachilerato">======</option>
-                        <option value="bachilerato-ciclo6">bachilerato-ciclo6</option>
-                        <option value="bachilerato-ciclo7">bachilerato-ciclo7</option>
-                        <option value="bachilerato-ciclo8">bachilerato-ciclo8</option>
-                        <option value="bachilerato-ciclo9">bachilerato-ciclo9</option>
-                        <option value="bachilerato-ciclo10">bachilerato-ciclo10</option>
-                        <option value="bachilerato-ciclo11">bachilerato-ciclo11</option>
-
-                        <option value="curso_especializado">Curso Especializado</option>
-                        <option value="carrera_tecnica">Carrera Técnica</option>
-                        <option value="diplomado">Diplomado</option>
-                    
-                        
-                    </select>
-                    
+                    <label for="num_identificacion">Número de Identificación del Acudiente</label>
+                    <input type="text" name="num_identificacion" class="form-control" id="num_identificacion" required>
                 </div>
+
                 <div class="form-group">
-                    <label for="fecha_matricula">Fecha de Matrícula</label>
-                    <input type="date" name="fecha_matricula" class="form-control" id="fecha_matricula" required>
+                    <label for="val_num_identificacion">Validar Número de Identificación</label>
+                    <input type="text" name="val_num_identificacion" class="form-control" id="val_num_identificacion" required>
                 </div>
-
                 <div class="form-group">
                     <label for="primer_nombre">Primer Nombre</label>
                     <input type="text" name="primer_nombre" class="form-control" id="primer_nombre" required>
@@ -79,123 +50,6 @@
                     <label for="apellido2">Segundo Apellido</label>
                     <input type="text" name="apellido2" class="form-control" id="apellido2">
                     
-                </div>
-
-                <div class="form-group">
-                    <label for="estudiante_sexo">Sexo del Estudiante</label>
-                    <select id="estudiante_sexo" class="form-control">
-                        <option value="">Seleccione un Sexo</option>
-                        <option value="hombre">HOMBRE</option>
-                        <option value="mujer">MUJER</option>
-                    
-                        
-                    </select>
-                   
-                </div>
-
-                <div class="form-group">
-                    <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-                    <input type="date" name="fecha_nacimiento" class="form-control" id="fecha_nacimiento" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="edad">Edad</label>
-                    <input type="number" name="edad" class="form-control" id="edad" disabled required>
-                </div>
-
-                <div class="form-group">
-                    <label for="num_identificacion">Número de Identificación</label>
-                    <input type="text" name="num_identificacion" class="form-control" id="num_identificacion" required>
-                </div>
-                <div class="form-group">
-                    <label for="val_num_identificacion">Validar Número de Identificación</label>
-                    <input type="text" name="val_num_identificacion" class="form-control" id="val_num_identificacion" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="direccion">Dirección</label>
-                    <input type="text" name="direccion" class="form-control" id="direccion" required>
-                </div>
-
-                        <div class="form-group">
-                            <label for="departamento">Departamento:</label>
-                            <select id="departamento" class="form-control">
-                                <option value="">Seleccione un departamento</option>
-                                @foreach(json_decode($datosDepartamento) as $item)
-                                    <option value="{{ $item->id }}">{{ $item->departamento }}</option>
-                                @endforeach
-                            </select>
-                
-                            <label for="ciudad">Ciudad:</label>
-                            <select id="ciudad" class="form-control" disabled>
-                                <option value="">Seleccione una ciudad</option>
-                            </select>
-               </div>
-
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" class="form-control" id="email" required onblur="validateEmail(this)" autocomplete="email"> 
-                </div>
-
-                <div class="form-group">
-                    <div class="form-group">
-                        <label for="ocupacion_actual">Ocupacion Actual:</label>
-                        <select id="ocupacion_actual" class="form-control">
-                            <option value="">Seleccione un categoría</option>
-                            @foreach(json_decode($ocupacionesColombia) as $ocupacion)
-                            <option value="{{ $ocupacion->id }}">{{ $ocupacion->ocupacion }}</option>
-                            @endforeach
-                        </select>
-                </div>
-            
-
-                <div class="form-group">
-                    <label for="telefono">Teléfono</label>
-                    <input type="tel" name="telefono" class="form-control" id="telefono" required oninput="formatPhoneNumber(this)">
-                </div>
-
-                <div class="form-group">
-                    <label for="estrato">Estrato</label>
-                    <input type="number" name="estrato" class="form-control" id="estrato" required>
-                </div>
-
-                <div class="form-group">
-                    <div class="form-group">
-                        <label for="siben">Sisben:</label>
-                        <select id="siben" class="form-control">
-                            <option value="">Seleccione un categoría</option>
-                            @foreach(json_decode($categoriasSisben) as $categoria)
-                            <option value="{{ $categoria->id }}">{{ $categoria->categoria }}</option>
-                            @endforeach
-                        </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="desplazado">Desplazado</label>
-                    <select id="desplazado" class="form-control">
-                        <option value="">Seleccione un SI o NO</option>
-                        <option value="si">SI</option>
-                        <option value="no">NO</option>                      
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="institucion_procedencia">Institución de Procedencia</label>
-                    <input type="text" name="institucion_procedencia" class="form-control" id="institucion_procedencia" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="estado_civil">Estado Civil:</label>
-                    <select id="estado_civil" class="form-control">
-                        <option value="">Seleccione un Estado Civil</option>
-                        <option value="soltero">SOLTERO</option>
-                        <option value="casado">CASADO</option>                       
-                        <option value="viudo">VIUDO</option>
-                        <option value="separado">SEPARADO</option>
-                        <option value="divorciado">DIVORCIADO</option>
-                        
-                    </select>
-                
                 </div>
 
                 <div class="form-group">
@@ -244,10 +98,7 @@
                    
                 </div>
 
-                <div class="form-group">
-                    <label for="acudiente_num_identificacion">Número de Identificación del Acudiente</label>
-                    <input type="text" name="acudiente_num_identificacion" class="form-control" id="acudiente_num_identificacion" required>
-                </div>
+           
 
                 <div class="form-group">
                     <label for="acudiente_direccion_residencial">Dirección Residencial del Acudiente</label>
@@ -409,79 +260,7 @@
     });
 </script>
     
-    <script>
-        // Evento que se dispara cuando cambia la fecha de nacimiento
-        $(document).on('change', '#fecha_nacimiento', function() {
-            // Obtener el valor de la fecha de nacimiento
-            const fechaNacimiento = $(this).val();
-    
-            // Calcular la edad en años
-            const edad = calcularEdad(fechaNacimiento);
-    
-            // Actualizar el campo de entrada de edad
-            $('#edad').val(edad);
-        });
-    
-        // Función para calcular la edad en años
-        function calcularEdad(fechaNacimiento) {
-            const fechaActual = new Date();
-            const fechaNac = new Date(fechaNacimiento);
-            let edad = fechaActual.getFullYear() - fechaNac.getFullYear();
-    
-            // Restar un año si la fecha actual es anterior al cumpleaños
-            if (fechaActual.getMonth() < fechaNac.getMonth() ||
-                (fechaActual.getMonth() === fechaNac.getMonth() && fechaActual.getDate() < fechaNac.getDate())) {
-                edad--;
-            }
-    
-            return edad;
-        }
-    </script>
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.18/dist/sweetalert2.all.min.js"></script>
-<script>
-    // Evento que se dispara cuando cambia la fecha de nacimiento
-    $(document).on('change', '#fecha_nacimiento', function() {
-        // Obtener el valor de la fecha de nacimiento
-        const fechaNacimiento = $(this).val();
-
-        // Calcular la edad en años
-        const edad = calcularEdad(fechaNacimiento);
-
-        // Actualizar el campo de entrada de edad
-        $('#edad').val(edad);
-
-        // Mostrar notificación según la edad
-        if (edad >= 18) {
-            Swal.fire({
-                title: '¡edad!',
-                text: 'La perosna es mayor de edad.',
-                icon: 'success'
-            });
-        } else {
-            Swal.fire({
-                title: '¡edad!',
-                text: 'Es menor de edad. Por favor, ten en cuenta las restricciones para menores.',
-                icon: 'warning'
-            });
-        }
-    });
-
-    // Función para calcular la edad en años
-    function calcularEdad(fechaNacimiento) {
-        const fechaActual = new Date();
-        const fechaNac = new Date(fechaNacimiento);
-        let edad = fechaActual.getFullYear() - fechaNac.getFullYear();
-
-        // Restar un año si la fecha actual es anterior al cumpleaños
-        if (fechaActual.getMonth() < fechaNac.getMonth() ||
-            (fechaActual.getMonth() === fechaNac.getMonth() && fechaActual.getDate() < fechaNac.getDate())) {
-            edad--;
-        }
-
-        return edad;
-    }
-</script>
+ 
 
 
 <script>
@@ -534,20 +313,5 @@
     }
 </script>
 
-<script>
-    function validateEmail(input) {
-        const emailValue = input.value;
-        if (!emailValue.includes('@')) {
-            // Muestra un modal con SweetAlert2
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: 'Por favor, ingrese una dirección de correo electrónico válida.'
-            }).then(() => {
-                input.focus(); // Devuelve el foco al campo de correo electrónico
-            });
-        }
-    }
-</script>
 
 @endsection

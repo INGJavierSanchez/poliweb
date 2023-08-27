@@ -1,45 +1,43 @@
 @extends('adminlte::page')
 
-@section('title', 'Listar Estudiante')
+@section('title', 'Listar Acudientes')
 
 @section('content_header')
-    <h1>Listado de Estudiante</h1>
+    <h1>Listado de Acudientes</h1>
 @stop
 
 @section('content')
-   <a href="estudiantes/create" class="btn btn-primary mb-3">Crear Estudiante</a>
+   <a href="acudientes/create" class="btn btn-primary mb-3">Crear Acudiente</a>
 
-<table id="estudiantes" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
+<table id="acudientes" class="table table-striped table-bordered shadow-lg mt-4" style="width:100%">
     <thead class="bg-primary text-white">
         <tr>
             <th scope="col">ID</th>
-            <th scope="col">SEDE</th>
+            <th scope="col">Codigo Estudiante</th>
             <th scope="col">Número De Identificación</th>
             <th scope="col">Primer Nombre</th>
             <th scope="col">Segundo Nombre</th>
             <th scope="col">Primer Apellido</th>
             <th scope="col">Segundo Apellido</th>
-            <th scope="col">Fecha de Nacimiento</th>
-            <th scope="col">Edad</th>
+
         </tr>
     </thead>
     <tbody>
-        @foreach ($estudiantes as $estudiante)
+        @foreach ($acudientes as $acudiente)
         <tr>
-            <td>{{$estudiante->id}}</td>
-            <td>{{$estudiante->sede}}</td>
-            <td>{{$estudiante->num_identificacion}}</td>
-            <td>{{$estudiante->primer_nombre}}</td>
-            <td>{{$estudiante->segundo_nombre}}</td>
-            <td>{{$estudiante->primer_apellido}}</td>
-            <td>{{$estudiante->segundo_apellido}}</td>
-            <td>{{$estudiante->fecha_nacimiento}}</td>
-            <td>{{$estudiante->edad}}</td>
+            <td>{{$acudiente->id_acudiente}}</td>
+            <td>{{$acudiente->codigo_estudiante}}</td>
+            <td>{{$acudiente->numero_identificacion}}</td>
+            <td>{{$acudiente->primer_nombre}}</td>
+            <td>{{$acudiente->segundo_nombre}}</td>
+            <td>{{$acudiente->primer_apellido}}</td>
+            <td>{{$acudiente->segundo_apellido}}</td>
+  
             
             
             <td>
-                <form action="{{ route ('estudiantes.destroy',$estudiante->id)}}" method="POST">
-                <a href="/estudiantes/{{ $estudiante->id}}/edit" class="btn btn-info">Editar</a>
+                <form action="{{ route ('acudientes.destroy',$acudiente->id)}}" method="POST">
+                <a href="/acudientes/{{ $acudiente->id}}/edit" class="btn btn-info">Editar</a>
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Borrar</button>
@@ -63,7 +61,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#estudiantes').DataTable({
+        $('#acudientes').DataTable({
             "lengthMenu": [[5, 10, 50, -1], [5, 10, 50, "Todos"]],
             "language": {
                 "sProcessing": "Procesando...",

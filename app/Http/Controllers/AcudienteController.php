@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Estudiante;
+use App\Models\Acudiente;
 
-class EstudianteController extends Controller
+class AcudienteController extends Controller
 {
      public function __construct(){
          $this->middleware('auth');
@@ -17,9 +17,9 @@ class EstudianteController extends Controller
      */
     public function index()
     {
-        $estudiantes = Estudiante::all();
+        $acudientes = Acudiente::all();
         
-        return view('estudiante.index')->with('estudiantes',$estudiantes);
+        return view('acudiente.index')->with('acudientes',$acudientes);
     }
 
     /**
@@ -144,7 +144,7 @@ class EstudianteController extends Controller
                 //dd($registro);
         //$categoriasSisben = json_decode(json_encode($categorias, true));
 
-        return view('estudiante.create')->with([
+        return view('acudiente.create')->with([
             'datosDepartamento' => $datosDepartamento,
             'categoriasSisben' => $categoriasSisben,
             'ocupacionesColombia' => $ocupacionesColombia,
@@ -186,7 +186,7 @@ class EstudianteController extends Controller
             'observaciones' => 'nullable',
         ]);
         // Validar los datos recibidos
-        $estudiantes = new Estudiante();
+        $acudientes = new Acudiente();
         // Capturar todos los datos recibidos
         $estudiantes->nombre1 = $request->nombre1;
         $estudiantes->nombre2 = $request->nombre2;
@@ -212,7 +212,7 @@ class EstudianteController extends Controller
         // Guardar los datos
         $estudiantes->save();
 
-        return redirect('/estudiantes');
+        return redirect('/acudientes');
 
     }
 
