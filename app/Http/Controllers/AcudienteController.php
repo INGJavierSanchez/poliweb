@@ -139,7 +139,7 @@ class AcudienteController extends Controller
                 { "id": 11, "nivel": "Doctorado" }
             ]' ;
         
-            $registro = new Estudiante();
+            $registro = new Acudiente();
             $ultimoId = $registro->latest('id')->first()->id ?? 0; // Obtener el último ID
                 //dd($registro);
         //$categoriasSisben = json_decode(json_encode($categorias, true));
@@ -235,8 +235,8 @@ class AcudienteController extends Controller
      */
     public function edit($id)
     {
-        $estudiante = Estudiante::find($id);
-        return view('estudiante.edit')->with('estudiante',$estudiante);
+        $estudiante = Acudiente::find($id);
+        return view('acudiente.edit')->with('acudiente',$acudiente);
     }
 
     /**
@@ -248,16 +248,16 @@ class AcudienteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $estudiante = Estudiante::find($id);
+        $acudiente = Acudiente::find($id);
 
-        $estudiante->codigo = $request->get('codigo');
-        $estudiante->descripcion = $request->get('descripcion');
-        $estudiante->cantidad = $request->get('cantidad');
-        $estudiante->precio = $request->get('precio');
+        $acudiente->codigo = $request->get('codigo');
+        $acudiente->descripcion = $request->get('descripcion');
+        $acudiente->cantidad = $request->get('cantidad');
+        $acudiente->precio = $request->get('precio');
 
-        $estudiante->save();
+        $acudiente->save();
 
-        return redirect('/estudiantes');
+        return redirect('/acudiente');
     }
 
     /**
@@ -268,8 +268,8 @@ class AcudienteController extends Controller
      */
     public function destroy($id)
     {
-        $estudiante = Estudiante::find($id);
-        $estudiante->delete();
-        return redirect('/estudiantes');
+        $acudiente = Acudiente::find($id);
+        $acudiente->delete();
+        return redirect('/acudiente');
     }
 }
