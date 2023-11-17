@@ -38,8 +38,9 @@
                         <option value="bachilerato-normal10">bachilerato-normal10</option>
                         <option value="bachilerato-ciclo11">bachilerato-normal11</option>
 
-                        <option value="bachilerato-ciclo">bachilerato-ciclo</option>
+                        
                         <option value="bachilerato">======</option>
+                        <option value="bachilerato-ciclo">bachilerato-ciclo</option>
                         <option value="bachilerato-ciclo6">bachilerato-ciclo6</option>
                         <option value="bachilerato-ciclo7">bachilerato-ciclo7</option>
                         <option value="bachilerato-ciclo8">bachilerato-ciclo8</option>
