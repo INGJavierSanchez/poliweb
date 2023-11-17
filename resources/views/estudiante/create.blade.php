@@ -19,11 +19,11 @@
                 <!-- Agrega aquí los campos del formulario -->
                 <div class="form-group">
                     <label for="codigo">Código</label>
-                    <input type="text" name="codigo" class="form-control" id="codigo" disabled>
+                    <input type="text" name="codigo" class="form-control" id="codigo" readonly>
                 </div>
                 <div class="form-group">
                     <label for="servicio_solicitado">Servicio Solicitado</label>
-                    <select id="servicio_solicitado" class="form-control">
+                    <select id="servicio_solicitado" name="servicio_solicitado" class="form-control">
                         <option value="">Seleccione Servicio</option>
                         <option value="primaria">primaria</option>
                         <option value="bachilerato">bachilerato</option>
@@ -83,7 +83,7 @@
 
                 <div class="form-group">
                     <label for="estudiante_sexo">Sexo del Estudiante</label>
-                    <select id="estudiante_sexo" class="form-control">
+                    <select id="estudiante_sexo"  name="estudiante_sexo" class="form-control">
                         <option value="">Seleccione un Sexo</option>
                         <option value="hombre">HOMBRE</option>
                         <option value="mujer">MUJER</option>
@@ -100,7 +100,22 @@
 
                 <div class="form-group">
                     <label for="edad">Edad</label>
-                    <input type="number" name="edad" class="form-control" id="edad" disabled required>
+                    <input type="number" name="edad" class="form-control" id="edad" readonly required>
+                </div>
+
+                <div class="form-group">
+                    <label for="tipo_documento_estudiante">Tipo Documento</label>
+                    <select id="tipo_documento_estudiante"  name="tipo_documento_estudiante" class="form-control">
+                        <option value="">Seleccione un TIPO DE DOCUMENTO</option>
+                        <option value="REGISTRO CIVIL">REGISTRO CIVIL</option>
+                        <option value="TARJETA DE IDENTIDAD">TARJETA DE IDENTIDAD</option>
+                        <option value="CEDULA">CEDULA</option>
+                        <option value="CEDULA EXTRANJERIA">CEDULA EXTRANJERIA</option>
+                        <option value="PASAPORTE">PASAPORTE</option>
+                    
+                        
+                    </select>
+                   
                 </div>
 
                 <div class="form-group">
@@ -119,7 +134,7 @@
 
                         <div class="form-group">
                             <label for="departamento">Departamento:</label>
-                            <select id="departamento" class="form-control">
+                            <select id="departamento" name="departamento" class="form-control">
                                 <option value="">Seleccione un departamento</option>
                                 @foreach(json_decode($datosDepartamento) as $item)
                                     <option value="{{ $item->id }}">{{ $item->departamento }}</option>
@@ -127,7 +142,7 @@
                             </select>
                 
                             <label for="ciudad">Ciudad:</label>
-                            <select id="ciudad" class="form-control" disabled>
+                            <select id="ciudad" name="ciudad" class="form-control" readonly>
                                 <option value="">Seleccione una ciudad</option>
                             </select>
                </div>
@@ -140,7 +155,7 @@
                 <div class="form-group">
                     <div class="form-group">
                         <label for="ocupacion_actual">Ocupacion Actual:</label>
-                        <select id="ocupacion_actual" class="form-control">
+                        <select id="ocupacion_actual" name="ocupacion_actual" class="form-control">
                             <option value="">Seleccione un categoría</option>
                             @foreach(json_decode($ocupacionesColombia) as $ocupacion)
                             <option value="{{ $ocupacion->id }}">{{ $ocupacion->ocupacion }}</option>
@@ -172,7 +187,7 @@
 
                 <div class="form-group">
                     <label for="desplazado">Desplazado</label>
-                    <select id="desplazado" class="form-control">
+                    <select id="desplazado" name="desplazado" class="form-control">
                         <option value="">Seleccione un SI o NO</option>
                         <option value="si">SI</option>
                         <option value="no">NO</option>                      
@@ -186,7 +201,7 @@
 
                 <div class="form-group">
                     <label for="estado_civil">Estado Civil:</label>
-                    <select id="estado_civil" class="form-control">
+                    <select id="estado_civil" name="estado_civil"  class="form-control">
                         <option value="">Seleccione un Estado Civil</option>
                         <option value="soltero">SOLTERO</option>
                         <option value="casado">CASADO</option>                       
@@ -220,7 +235,7 @@
 
                 <div class="form-group">
                     <label for="acudiente_escolaridad">Escolaridad del Acudiente:</label>
-                    <select id="acudiente_escolaridad" class="form-control">
+                    <select id="acudiente_escolaridad" name="acudiente_escolaridad" class="form-control">
                         <option value="">Seleccione Escolaridad: </option>
                         @foreach(json_decode($niveles_escolaridad) as $escolaridad)
                         <option value="{{ $escolaridad->id }}">{{ $escolaridad->nivel }}</option>
@@ -236,10 +251,24 @@
 
                 <div class="form-group">
                     <label for="acudiente_sexo">Sexo del Acudiente</label>
-                    <select id="acudiente_sexo" class="form-control">
+                    <select id="acudiente_sexo" id="acudiente_sexo" class="form-control">
                         <option value="">Seleccione un Sexo</option>
                         <option value="hombre">HOMBRE</option>
                         <option value="mujer">MUJER</option>                      
+                    </select>
+                   
+                </div>
+                <div class="form-group">
+                    <label for="tipo_documento_acudiente">Tipo Documento</label>
+                    <select id="tipo_documento_acudiente"  name="tipo_documento_acudiente" class="form-control">
+                        <option value="">Seleccione un TIPO DE DOCUMENTO</option>
+                        <option value="REGISTRO CIVIL">REGISTRO CIVIL</option>
+                        <option value="TARJETA DE IDENTIDAD">TARJETA DE IDENTIDAD</option>
+                        <option value="CEDULA">CEDULA</option>
+                        <option value="CEDULA EXTRANJERIA">CEDULA EXTRANJERIA</option>
+                        <option value="PASAPORTE">PASAPORTE</option>
+                    
+                        
                     </select>
                    
                 </div>
@@ -263,7 +292,7 @@
 
                 <div class="form-group">
                     <label for="acudiente_departamento">Departamento del Acudiente</label>
-                    <select id="acudiente_departamento" class="form-control">
+                    <select id="acudiente_departamento" name="acudiente_departamento" class="form-control">
                         <option value="">Seleccione un departamento</option>
                         @foreach(json_decode($datosDepartamento) as $item)
                             <option value="{{ $item->id }}">{{ $item->departamento }}</option>
@@ -274,7 +303,7 @@
 
                 <div class="form-group">
                     <label for="acudiente_municipio">Municipio del Acudiente</label>
-                    <select id="acudiente_municipio" class="form-control" disabled>
+                    <select id="acudiente_municipio" id="acudiente_municipio" class="form-control" readonly>
                         <option value="">Seleccione una ciudad</option>
                     </select>
                     
@@ -282,7 +311,7 @@
 
                 <div class="form-group">
                     <label for="acudiente_ocupacion_actual">Ocupación Actual del Acudiente</label>
-                    <select id="acudiente_ocupacion_actual" class="form-control">
+                    <select id="acudiente_ocupacion_actual" name="acudiente_ocupacion_actual" class="form-control">
                         <option value="">Seleccione un categoría</option>
                         @foreach(json_decode($ocupacionesColombia) as $ocupacion)
                         <option value="{{ $ocupacion->id }}">{{ $ocupacion->ocupacion }}</option>
@@ -303,7 +332,7 @@
 
                 <div class="form-group">
                     <label for="acudiente_sisben">Sisben del Acudiente:</label>
-                    <select id="acudiente_sisben" class="form-control">
+                    <select id="acudiente_sisben" name="acudiente_sisben" class="form-control">
                         <option value="">Seleccione un categoría</option>
                         @foreach(json_decode($categoriasSisben) as $categoria)
                         <option value="{{ $categoria->id }}">{{ $categoria->categoria }}</option>
@@ -314,7 +343,7 @@
 
                 <div class="form-group">
                     <label for="acudiente_desplazado">¿El Acudiente es Desplazado?</label>
-                    <select id="acudiente_desplazado" class="form-control">
+                    <select id="acudiente_desplazado" name="acudiente_desplazado" class="form-control">
                         <option value="no">NO</option>   
                         <option value="si">SI</option>
                                           
@@ -354,7 +383,7 @@
                         dataType: 'json',
                         success: function (data) {
                             // Habilitar el select de ciudades
-                            $('#ciudad').prop('disabled', false);
+                            $('#ciudad').prop('readonly', false);
     
                             // Agregar las opciones de ciudades al select
                             $.each(data, function (index, ciudad) {
@@ -367,7 +396,7 @@
                     });
                 } else {
                     // Si no se selecciona ningún departamento, deshabilitar y limpiar el select de ciudades
-                    $('#ciudad').prop('disabled', true);
+                    $('#ciudad').prop('readonly', true);
                 }
             });
         });
@@ -390,7 +419,7 @@
                     dataType: 'json',
                     success: function (data) {
                         // Habilitar el select de ciudades
-                        $('#acudiente_municipio').prop('disabled', false);
+                        $('#acudiente_municipio').prop('readonly', false);
 
                         // Agregar las opciones de ciudades al select
                         $.each(data, function (index, ciudad) {
@@ -403,7 +432,7 @@
                 });
             } else {
                 // Si no se selecciona ningún departamento, deshabilitar y limpiar el select de ciudades
-                $('#acudiente_municipio').prop('disabled', true);
+                $('#acudiente_municipio').prop('readonly', true);
             }
         });
     });

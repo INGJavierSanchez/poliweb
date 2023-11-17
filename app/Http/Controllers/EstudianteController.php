@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Estudiante;
+use App\Models\Acudiente;
 
 class EstudianteController extends Controller
 {
@@ -158,15 +159,18 @@ class EstudianteController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {        
+    {       
+        //dd($request->estudiante_sexo);
+        dd($request->all());
+        
         // Validar los datos recibidos
-        $request->validate([
-            'codigo' => 'required',
+          $request->validate([
             'fecha_matricula' => 'required|date',
             'primer_nombre' => 'required',
             'segundo_nombre' => 'nullable',
             'apellido1' => 'required',
             'apellido2' => 'nullable',
+            'estudiante_sexo' => 'required',
             'fecha_nacimiento' => 'required|date',
             'edad' => 'required|integer',
             'num_identificacion' => 'required',
@@ -178,23 +182,23 @@ class EstudianteController extends Controller
             'ocupacion_actual' => 'nullable',
             'telefono' => 'nullable',
             'estrato' => 'required|integer',
-            'sisben' => 'required|integer',
+            'sisben' => 'required',
             'desplazado' => 'nullable',
             'institucion_procedencia' => 'nullable',
             'estado_civil' => 'nullable',
             'servicio_solicitado' => 'nullable',
             'observaciones' => 'nullable',
-        ]);
+        ]);  
         // Validar los datos recibidos
         $estudiantes = new Estudiante();
         // Capturar todos los datos recibidos
-        $estudiantes->nombre1 = $request->nombre1;
-        $estudiantes->nombre2 = $request->nombre2;
-        $estudiantes->apellido1 = $request->apellido1;
-        $estudiantes->apellido2 = $request->apellido2;
+        $estudiantes->primer_nombre = $request->primer_nombre;
+        $estudiantes->segundo_nombre = $request->segundo_nombre;
+        $estudiantes->primer_apellido = $request->apellido1;
+        $estudiantes->segundo_apellido = $request->apellido2;
         $estudiantes->fecha_nacimiento = $request->fecha_nacimiento;
         $estudiantes->edad = $request->edad;
-        $estudiantes->num_identificacion = $request->num_identificacion;
+        $estudiantes->numero_identificacion = $request->num_identificacion;
         $estudiantes->direccion = $request->direccion;
         $estudiantes->barrio = $request->barrio;
         $estudiantes->municipio = $request->municipio;
@@ -211,6 +215,11 @@ class EstudianteController extends Controller
         $estudiantes->observaciones = $request->observaciones;;
         // Guardar los datos
         $estudiantes->save();
+
+       
+
+       // $Acudiente = new Acudiente();
+        //dd(Acudiente);
 
         return redirect('/estudiantes');
 
