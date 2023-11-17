@@ -26,27 +26,27 @@
                     <select id="servicio_solicitado" name="servicio_solicitado" class="form-control">
                         <option value="">Seleccione Servicio</option>
                         <option value="primaria">primaria</option>
-                        <option value="bachilerato">bachilerato</option>
+                        <option value="bachilerato">bachillerato</option>
                        
-                        <option value="bachilerato-normal">bachilerato-normal</option>
+                        <option value="bachilerato-normal">bachillerato-normal</option>
                         <option value="bachilerato">======</option>
 
-                        <option value="bachilerato-normal6">bachilerato-normal6</option>
-                        <option value="bachilerato-normal7">bachilerato-normal7</option>
-                        <option value="bachilerato-normal8">bachilerato-normal8</option>
-                        <option value="bachilerato-normal9">bachilerato-normal9</option>
-                        <option value="bachilerato-normal10">bachilerato-normal10</option>
-                        <option value="bachilerato-ciclo11">bachilerato-normal11</option>
+                        <option value="bachilerato-normal6">bachillerato-normal6</option>
+                        <option value="bachilerato-normal7">bachillerato-normal7</option>
+                        <option value="bachilerato-normal8">bachillerato-normal8</option>
+                        <option value="bachilerato-normal9">bachillerato-normal9</option>
+                        <option value="bachilerato-normal10">bachillerato-normal10</option>
+                        <option value="bachilerato-ciclo11">bachillerato-normal11</option>
 
                         
                         <option value="bachilerato">======</option>
-                        <option value="bachilerato-ciclo">bachilerato-ciclo</option>
-                        <option value="bachilerato-ciclo6">bachilerato-ciclo6</option>
-                        <option value="bachilerato-ciclo7">bachilerato-ciclo7</option>
-                        <option value="bachilerato-ciclo8">bachilerato-ciclo8</option>
-                        <option value="bachilerato-ciclo9">bachilerato-ciclo9</option>
-                        <option value="bachilerato-ciclo10">bachilerato-ciclo10</option>
-                        <option value="bachilerato-ciclo11">bachilerato-ciclo11</option>
+                        <option value="bachilerato-ciclo">bachillerato-ciclo</option>
+                        <option value="bachilerato-ciclo6">bachillerato-ciclo6</option>
+                        <option value="bachilerato-ciclo7">bachillerato-ciclo7</option>
+                        <option value="bachilerato-ciclo8">bachillerato-ciclo8</option>
+                        <option value="bachilerato-ciclo9">bachillerato-ciclo9</option>
+                        <option value="bachilerato-ciclo10">bachillerato-ciclo10</option>
+                        <option value="bachilerato-ciclo11">bachillerato-ciclo11</option>
 
                         <option value="curso_especializado">Curso Especializado</option>
                         <option value="carrera_tecnica">Carrera Técnica</option>
@@ -58,7 +58,7 @@
                 </div>
                 <div class="form-group">
                     <label for="fecha_matricula">Fecha de Matrícula</label>
-                    <input type="date" name="fecha_matricula" class="form-control" id="fecha_matricula" required>
+                    <input type="date" name="fecha_matricula" class="form-control" id="fecha_matricula" required min="1800-01-01" max="2030-12-31">
                 </div>
 
                 <div class="form-group">
@@ -96,7 +96,7 @@
 
                 <div class="form-group">
                     <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-                    <input type="date" name="fecha_nacimiento" class="form-control" id="fecha_nacimiento" required>
+                    <input type="date" name="fecha_nacimiento" class="form-control" id="fecha_nacimiento" required required min="1800-01-01" max="2030-12-31">
                 </div>
 
                 <div class="form-group">
