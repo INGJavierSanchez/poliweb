@@ -485,7 +485,7 @@
         if (edad >= 18) {
             Swal.fire({
                 title: '¡edad!',
-                text: 'La perosna es mayor de edad.',
+                text: 'La persona es mayor de edad.',
                 icon: 'success'
             });
         } else {
