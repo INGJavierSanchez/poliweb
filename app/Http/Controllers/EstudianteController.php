@@ -161,7 +161,7 @@ class EstudianteController extends Controller
     public function store(Request $request)
     {       
         //dd($request->estudiante_sexo);
-        //dd($request->all());
+        dd($request->all());
         
         // Validar los datos recibidos
           $request->validate([
