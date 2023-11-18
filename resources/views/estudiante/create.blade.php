@@ -29,7 +29,7 @@
                         <option value="parvulo">parvulo</option>
                         <option value="prejardin">prejardin</option>
                         <option value="jardin">jardin</option>
-                        <option value="parvulo">parvulo</option>
+                        <option value="transicion">transicion</option>
 
                         <option value="">======</option>
 
