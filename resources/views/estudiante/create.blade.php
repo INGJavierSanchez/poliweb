@@ -25,28 +25,39 @@
                     <label for="servicio_solicitado">Servicio Solicitado</label>
                     <select id="servicio_solicitado" name="servicio_solicitado" class="form-control">
                         <option value="">Seleccione Servicio</option>
-                        <option value="primaria">primaria</option>
-                        <option value="bachilerato">bachillerato</option>
-                       
-                        <option value="bachilerato-normal">bachillerato-normal</option>
-                        <option value="bachilerato">======</option>
-
-                        <option value="bachilerato-normal6">bachillerato-normal6</option>
-                        <option value="bachilerato-normal7">bachillerato-normal7</option>
-                        <option value="bachilerato-normal8">bachillerato-normal8</option>
-                        <option value="bachilerato-normal9">bachillerato-normal9</option>
-                        <option value="bachilerato-normal10">bachillerato-normal10</option>
-                        <option value="bachilerato-ciclo11">bachillerato-normal11</option>
-
                         
-                        <option value="bachilerato">======</option>
-                        <option value="bachilerato-ciclo">bachillerato-ciclo</option>
-                        <option value="bachilerato-ciclo6">bachillerato-ciclo6</option>
-                        <option value="bachilerato-ciclo7">bachillerato-ciclo7</option>
-                        <option value="bachilerato-ciclo8">bachillerato-ciclo8</option>
-                        <option value="bachilerato-ciclo9">bachillerato-ciclo9</option>
-                        <option value="bachilerato-ciclo10">bachillerato-ciclo10</option>
-                        <option value="bachilerato-ciclo11">bachillerato-ciclo11</option>
+                        <option value="parvulo">parvulo</option>
+                        <option value="prejardin">prejardin</option>
+                        <option value="jardin">jardin</option>
+                        <option value="parvulo">parvulo</option>
+
+                        <option value="">======</option>
+
+                        <option value="primero">primero</option>
+                        <option value="segundo">segundo</option>
+                        <option value="tercero">tercero</option>
+                        <option value="cuarto">cuarto</option>
+                        <option value="quinto">quinto</option>
+                      
+                        <option value="">======</option>
+
+                        <option value="bachilerato-normal6">sexto</option>
+                        <option value="bachilerato-normal7">septimo</option>
+                        <option value="bachilerato-normal8">octavo</option>
+                        <option value="bachilerato-normal9">noveno</option>
+                        <option value="bachilerato-normal10">decimo</option>
+                        <option value="bachilerato-normal11">undecimo</option>
+
+                        <option value="">======</option>
+
+                        <option value="bachilerato-ciclo6">ciclo-sexto</option>
+                        <option value="bachilerato-ciclo7">ciclo-septimo</option>
+                        <option value="bachilerato-ciclo8">ciclo-octavo</option>
+                        <option value="bachilerato-ciclo9">ciclo-noveno</option>
+                        <option value="bachilerato-ciclo10">ciclo-decimo</option>
+                        <option value="bachilerato-ciclo11">ciclo-undecimo</option>
+
+                        <option value="">======</option>
 
                         <option value="curso_especializado">Curso Especializado</option>
                         <option value="carrera_tecnica">Carrera Técnica</option>
