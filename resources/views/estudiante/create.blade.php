@@ -58,7 +58,7 @@
                 </div>
                 <div class="form-group">
                     <label for="fecha_matricula">Fecha de Matrícula</label>
-                    <input type="date" name="fecha_matricula" class="form-control" id="fecha_matricula" required min="1800-01-01" max="2030-12-31">
+                    <input type="date" name="fecha_matricula" class="form-control" id="fecha_matricula"  min="1900-01-01" value="1980-01-01" required/>
                 </div>
 
                 <div class="form-group">
@@ -96,7 +96,7 @@
 
                 <div class="form-group">
                     <label for="fecha_nacimiento">Fecha de Nacimiento</label>
-                    <input type="date" name="fecha_nacimiento" class="form-control" id="fecha_nacimiento" required required min="1800-01-01" max="2030-12-31">
+                    <input type="date" name="fecha_nacimiento" class="form-control" id="fecha_nacimiento" min="1900-01-01" value="1980-01-01" required/>
                 </div>
 
                 <div class="form-group">
